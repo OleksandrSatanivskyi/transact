@@ -1,10 +1,6 @@
 from pathlib import Path
-from typing import List
 
-from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from fastapi import Depends, Query, HTTPException
-from pydantic import NonNegativeInt
 
 ROOT_DIR = Path(__file__).parent.parent
 ENV_PATH = ROOT_DIR / ".env"

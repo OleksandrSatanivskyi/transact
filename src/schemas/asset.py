@@ -1,18 +1,18 @@
 from datetime import datetime
 
-from pydantic import BaseModel, NonNegativeInt, Field
+from pydantic import BaseModel, NonNegativeInt, Field, ConfigDict, NonNegativeFloat
 
 
-class AssetCreate(BaseModel):
+class AssetUpdate(BaseModel):
     ticker: str = Field(..., min_length=1, max_length=8)
-    name: str = Field(...)
+    name: str = Field(..., min_length=1)
 
 class AssetGet(BaseModel):
-    id: int = Field(...)
+    id: NonNegativeInt = Field(...)
     ticker: str = Field(..., min_length=1, max_length=8)
     name: str = Field(...)
     updation_date: datetime = Field(...)
+    amount: NonNegativeFloat = Field(...)
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 

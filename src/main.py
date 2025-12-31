@@ -2,6 +2,10 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from src.config import settings
+from src.routers.stock_router import router as stock_router
+from src.routers.crypto_router import router as crypto_router
+from src.routers.crypto_transaction_router import router as crypto_transaction_router
+from src.routers.stock_transaction_router import router as stock_transaction_router
 
 app = FastAPI(
     title="API",
@@ -17,6 +21,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(stock_router)
+app.include_router(crypto_router)
+app.include_router(stock_transaction_router)
+app.include_router(crypto_transaction_router)
 
 if __name__ == "__main__":
     import uvicorn
