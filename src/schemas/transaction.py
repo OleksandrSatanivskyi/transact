@@ -10,6 +10,7 @@ class TransactionUpdate(BaseModel):
     amount: NonNegativeFloat = Field(...)
     total_price: NonNegativeFloat = Field(...)
     comment: Optional[str] = None
+    is_active: bool = Field(...)
 
 class TransactionCreate(BaseModel):
     asset_id: NonNegativeInt = Field(...)
@@ -18,6 +19,7 @@ class TransactionCreate(BaseModel):
     amount: NonNegativeFloat = Field(...)
     total_price: NonNegativeFloat = Field(...)
     comment: Optional[str] = None
+    is_active: bool = Field(...)
 
 class TransactionGet(BaseModel):
     id: NonNegativeInt = Field(...)
@@ -27,6 +29,7 @@ class TransactionGet(BaseModel):
     total_price: NonNegativeFloat = Field(...)
     comment: Optional[str] = None
     asset_id: NonNegativeInt = Field(...)
+    is_active: bool = Field(...)
 
     class Config:
         from_attributes = True
